@@ -1,0 +1,11 @@
+div {
+  margin: 10px;
+}
+
+div > input {
+  width: 80%;
+}
+
+div:last-child {
+  text-align: right;
+}

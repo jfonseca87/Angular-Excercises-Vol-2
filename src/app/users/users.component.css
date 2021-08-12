@@ -1,0 +1,28 @@
+.main-container {
+  margin: auto;
+  width: 1200px;
+  height: 800px;
+  background-color: rgb(131, 129, 129);
+}
+
+.title {
+  margin:auto;
+  width: 20%;
+  padding-top: 10px;
+}
+
+.container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.container > div {
+  width: 44%;
+  height: 650px;
+  background-color: rgb(191, 191, 191);
+  padding: 20px;
+  border-radius: 3%;
+}
+

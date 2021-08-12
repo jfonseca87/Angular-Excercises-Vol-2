@@ -1,0 +1,12 @@
+div {
+  width: 100%;
+  background-color: red;
+}
+
+div > table {
+  width: 100%;
+}
+
+button {
+  margin-left: 5px;
+}

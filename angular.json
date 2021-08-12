@@ -124,5 +124,10 @@
       }
     }
   },
-  "defaultProject": "unit-test-example"
+  "defaultProject": "unit-test-example",
+  "test": {
+    "options": {
+      "codeCoverage": true
+    }
+  }
 }

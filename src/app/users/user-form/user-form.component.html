@@ -1,0 +1,20 @@
+<ng-container [formGroup]="userForm" >
+  <div>
+    <label for="">FirstName:</label>
+    <input type="text" formControlName="first_name" />
+  </div>
+  <div>
+    <label for="">LastName:</label>
+    <input type="text" formControlName="last_name" />
+  </div>
+  <div>
+    <label for="">Email:</label>
+    <input type="text" formControlName="email" />
+  </div>
+  <div>
+    <button (click)="saveUser()">Save</button>
+  </div>
+</ng-container>
+{{ userForm.value | json }}
+{{ userForm.status }}
+

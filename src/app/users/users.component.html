@@ -4,10 +4,10 @@
   </div>
   <div class="container">
     <div>
-      <app-user-list></app-user-list>
+      <app-user-list (updateEmitter)="updateUser($event)" (deleteEmitter)="deleteUser($event)"></app-user-list>
     </div>
     <div>
-      <app-user-form></app-user-form>
+      <app-user-form [user]="user" (saveEmitter)="saveUser($event)"></app-user-form>
     </div>
   </div>
 </div>

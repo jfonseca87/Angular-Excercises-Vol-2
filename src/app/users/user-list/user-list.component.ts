@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
+  @Output() updateEmitter = new EventEmitter();
+  @Output() deleteEmitter = new EventEmitter();
   users: any = [];
 
   constructor(private userService: UserServiceService) { }
@@ -22,15 +24,15 @@ export class UserListComponent implements OnInit {
     );
   }
 
-  createUser(): void {
-
-  }
-
   updateUser(user: any): void {
-
+    debugger
+    this.updateEmitter.emit(user);
   }
 
-  deleteUser(userId: number) {
-
+  deleteUser(userId: number): void {
+    debugger
+    if (confirm('Are you sure to delete this record')) {
+      this.deleteEmitter.emit(userId);
+    }
   }
 }

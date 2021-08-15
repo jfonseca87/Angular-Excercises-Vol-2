@@ -23,7 +23,7 @@ export class UserServiceService {
     return this.http.post<any>(this.userUrl, user);
   }
 
-  updateUser(user: any, userId: number): Observable<any> {
+  updateUser(user: any): Observable<any> {
     return this.http.put<any>(this.userUrl, user);
   }
 

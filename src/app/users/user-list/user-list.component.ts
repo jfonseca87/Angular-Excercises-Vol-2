@@ -25,12 +25,10 @@ export class UserListComponent implements OnInit {
   }
 
   updateUser(user: any): void {
-    debugger
     this.updateEmitter.emit(user);
   }
 
   deleteUser(userId: number): void {
-    debugger
     if (confirm('Are you sure to delete this record')) {
       this.deleteEmitter.emit(userId);
     }

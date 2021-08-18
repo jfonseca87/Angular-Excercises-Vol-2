@@ -18,7 +18,6 @@ export class UsersComponent implements OnInit {
   }
 
   saveUser(user: any): void {
-    debugger
     user.userId = user.userId === null ? 0 : user.userId;
     if (user.userId && user.userId > 0) {
       this.userService.updateUser(user).subscribe(
@@ -40,13 +39,11 @@ export class UsersComponent implements OnInit {
   }
 
   updateUser(user: any): void {
-    debugger
     this.user = [];
     this.user = user;
   }
 
   deleteUser(userId: any): void {
-    debugger
     this.userService.deleteUser(userId).subscribe(
       res => {
         this.updateUserList();

@@ -21,7 +21,6 @@ export class UserFormComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    debugger
     if (this.user) {
       this.createUserForm();
     }
@@ -37,7 +36,6 @@ export class UserFormComponent implements OnInit, OnChanges {
   }
 
   saveUser(): void {
-    debugger
     const user = this.userForm.value;
     this.saveEmitter.emit(user);
     this.userForm.reset();

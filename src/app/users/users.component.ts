@@ -7,15 +7,11 @@ import { UserServiceService } from '../services/user-service.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent {
   @ViewChild(UserListComponent) listComponent!: UserListComponent;
-  showForm = false;
   user: any;
 
   constructor(private userService: UserServiceService) { }
-
-  ngOnInit(): void {
-  }
 
   saveUser(user: any): void {
     user.userId = user.userId === null ? 0 : user.userId;

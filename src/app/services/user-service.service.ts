@@ -19,15 +19,15 @@ export class UserServiceService {
     return this.http.get<any>(this.userUrl + '/' + userId);
   }
 
-  createUser(user: any): Observable<any> {
+  createUser(user: any): Observable<boolean> {
     return this.http.post<any>(this.userUrl, user);
   }
 
-  updateUser(user: any): Observable<any> {
+  updateUser(user: any): Observable<boolean> {
     return this.http.put<any>(this.userUrl, user);
   }
 
-  deleteUser(userId: number): Observable<any> {
+  deleteUser(userId: number): Observable<boolean> {
     return this.http.delete<any>(this.userUrl + '/' + userId);
   }
 }

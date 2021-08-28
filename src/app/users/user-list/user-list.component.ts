@@ -7,8 +7,8 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  @Output() updateEmitter = new EventEmitter();
-  @Output() deleteEmitter = new EventEmitter();
+  @Output() updateEmitter = new EventEmitter<any>();
+  @Output() deleteEmitter = new EventEmitter<number>();
   users: any = [];
 
   constructor(private userService: UserServiceService) { }

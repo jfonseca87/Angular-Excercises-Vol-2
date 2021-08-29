@@ -40,6 +40,7 @@ describe('UserListComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  // When you use asychronous operations you should use fakeasync wrapper
   it('should get user from user service', fakeAsync(() => {
     userServiceSpy.getUsers.and.returnValue(of(MockUserData.USERS));
 

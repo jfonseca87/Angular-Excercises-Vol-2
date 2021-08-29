@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserServiceService } from '../services/user-service.service';
 
@@ -27,14 +27,14 @@ export class UsersComponent {
       this.userService.createUser(user).subscribe(
         res => {
           this.updateUserList();
-          alert('User create successfully');
+          alert('User created successfully');
         },
         error => console.log(error)
       );
     }
   }
 
-  updateUser(user: any): void {
+  updateUserEvent(user: any): void {
     this.user = [];
     this.user = user;
   }

@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Branches
+
+Each branch represent a exercise of specific topic related with angular functionalities:
+1. main = users' CRUD in memory
+2. test_with_jasmine = users' CRUD whit unit test using jasmine
+3. test_with_jest = users' CRUD whit unit test using jest

@@ -4,7 +4,6 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-
 import { UserFormComponent } from './user-form.component';
 
 describe('UserFormComponent', () => {
@@ -68,7 +67,7 @@ describe('UserFormComponent', () => {
   });
 
   it('should emit event to save user and reset user formgroup', fakeAsync(() => {
-    spyOn(component.saveEmitter, 'emit');
+    jest.spyOn(component.saveEmitter, 'emit');
     component.userForm.setValue(formValuesMock);
     fixture.detectChanges();
     component.saveUser();

@@ -11,25 +11,31 @@ import { of, throwError } from 'rxjs';
 describe('UsersComponent', () => {
   let component: UsersComponent;
   let fixture: ComponentFixture<UsersComponent>;
-  let userServiceSPY: jasmine.SpyObj<UserServiceService>;
+  let userServiceSpy = {} as any;
   const serviceError = new Error('Something happened');
+  const userServiceStub = {
+    getUsers: jest.fn(),
+    createUser: jest.fn(),
+    updateUser: jest.fn(),
+    deleteUser: jest.fn(),
+  };
 
   beforeEach(async () => {
-    userServiceSPY = jasmine.createSpyObj('UserServiceService', ['createUser', 'updateUser', 'getUsers', 'deleteUser']);
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, ReactiveFormsModule ],
-      declarations: [ UsersComponent, UserListComponent, UserFormComponent ],
+      imports: [HttpClientTestingModule, ReactiveFormsModule],
+      declarations: [UsersComponent, UserListComponent, UserFormComponent],
       providers: [
         {
           provide: UserServiceService,
-          useValue: userServiceSPY
-        }
-      ]
+          useValue: userServiceStub,
+        },
+      ],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    userServiceSPY.getUsers.and.returnValue(of(MockUserData.USERS));
+    userServiceSpy = TestBed.inject(UserServiceService);
+    userServiceSpy.getUsers.mockReturnValue(of(MockUserData.USERS));
     fixture = TestBed.createComponent(UsersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -40,72 +46,72 @@ describe('UsersComponent', () => {
   });
 
   it('should save user operation is successfull', fakeAsync(() => {
-    userServiceSPY.createUser.and.returnValue(of(true));
-    spyOn(window, 'alert');
+    userServiceSpy.createUser.mockReturnValueOnce(of(true));
+    window.alert = jest.fn();
     const newUser = MockUserData.USER;
     newUser.userId = 0;
 
     component.saveUser(newUser);
 
-    expect(userServiceSPY.createUser).toHaveBeenCalled();
+    expect(userServiceSpy.createUser).toHaveBeenCalled();
     expect(window.alert).toHaveBeenCalledWith('User created successfully');
   }));
 
   it('should save user operation fail', fakeAsync(() => {
-    userServiceSPY.createUser.and.returnValue(throwError(serviceError));
-    spyOn(console, 'log');
+    userServiceSpy.createUser.mockReturnValueOnce(throwError(serviceError));
+    jest.spyOn(console, 'log');
     const newUser = MockUserData.USER;
     newUser.userId = 0;
 
     component.saveUser(newUser);
 
-    expect(userServiceSPY.createUser).toHaveBeenCalled();
+    expect(userServiceSpy.createUser).toHaveBeenCalled();
     expect(console.log).toHaveBeenCalledWith(serviceError);
   }));
 
   it('should update user operation is succefull', fakeAsync(() => {
-    userServiceSPY.updateUser.and.returnValue(of(true));
-    spyOn(window, 'alert');
+    userServiceSpy.updateUser.mockReturnValueOnce(of(true));
+    window.alert = jest.fn();
     const existingUser = MockUserData.USER;
     existingUser.userId = 1;
 
     component.saveUser(existingUser);
 
-    expect(userServiceSPY.updateUser).toHaveBeenCalled();
+    expect(userServiceSpy.updateUser).toHaveBeenCalled();
     expect(window.alert).toHaveBeenCalledWith('User updated successfully');
   }));
 
   it('should update user operation fail', fakeAsync(() => {
-    userServiceSPY.updateUser.and.returnValue(throwError(serviceError));
-    spyOn(console, 'log');
+    userServiceSpy.updateUser.mockReturnValueOnce(throwError(serviceError));
+    jest.spyOn(console, 'log');
     const existingUser = MockUserData.USER;
     existingUser.userId = 1;
 
     component.saveUser(existingUser);
 
-    expect(userServiceSPY.updateUser).toHaveBeenCalled();
+    expect(userServiceSpy.updateUser).toHaveBeenCalled();
     expect(console.log).toHaveBeenCalledWith(serviceError);
   }));
 
   it('should delete user operation is successfull', fakeAsync(() => {
-    userServiceSPY.deleteUser.and.returnValue(of(true));
-    spyOn(window, 'alert');
+    userServiceSpy.deleteUser.mockReturnValueOnce(of(true));
+    window.alert = jest.fn();
 
     component.deleteUser(1);
 
-    expect(userServiceSPY.deleteUser).toHaveBeenCalled();
+    expect(userServiceSpy.deleteUser).toHaveBeenCalled();
     expect(window.alert).toHaveBeenCalledWith('User deleted successfully');
   }));
 
   it('should delete user operation fail', fakeAsync(() => {
-    userServiceSPY.deleteUser.and.returnValue(throwError(serviceError));
-    spyOn(console, 'log');
+    userServiceSpy.deleteUser.mockReturnValueOnce(throwError(serviceError));
+    jest.spyOn(console, 'log');
     const existingUser = MockUserData.USER;
     existingUser.userId = 1;
 
     component.deleteUser(existingUser);
 
-    expect(userServiceSPY.deleteUser).toHaveBeenCalled();
+    expect(userServiceSpy.deleteUser).toHaveBeenCalled();
     expect(console.log).toHaveBeenCalledWith(serviceError);
   }));
 });

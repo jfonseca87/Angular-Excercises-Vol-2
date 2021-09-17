@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { UserServiceService } from './user-service.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import * as MockUserData from '../../testing/mock-data-user-service';
+import { SpyFactory } from 'src/testing/spy-factory';
 
 describe('UserServiceService', () => {
   let service: UserServiceService;

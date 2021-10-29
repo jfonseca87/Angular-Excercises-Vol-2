@@ -32,3 +32,4 @@ Each branch represent a exercise of specific topic related with angular function
 1. main = users' CRUD in memory
 2. test_with_jasmine = users' CRUD whit unit test using jasmine
 3. test_with_jest = users' CRUD whit unit test using jest
+4. rick_and_morty_searcher = use of switchmap and forkjoin to get data from Rick And Morty's API

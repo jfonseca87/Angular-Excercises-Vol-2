@@ -1,1 +1,7 @@
-<app-users></app-users>
+
+<div>
+  <button (click)="toggleComponent()" > {{ buttonLabel }}</button>
+</div>
+<div *ngIf="showComponent">
+  <app-unsuscribe></app-unsuscribe>
+</div>

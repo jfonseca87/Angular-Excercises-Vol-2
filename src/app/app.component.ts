@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'unit-test-example';
+  showComponent = false;
+  buttonLabel = "Load Component";
+
+  toggleComponent() {
+    this.showComponent = !this.showComponent;
+    this.buttonLabel = this.showComponent ? "Unload Component" : "Load Component";
+  }
 }

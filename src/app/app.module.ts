@@ -3,24 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { UsersComponent } from './users/users.component';
-import { UserFormComponent } from './users/user-form/user-form.component';
-import { UserListComponent } from './users/user-list/user-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './components/user/user.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { UserFormTabComponent } from './components/user-form-tab/user-form-tab.component';
+import { UserFormToolbarComponent } from './components/user-form-toolbar/user-form-toolbar.component';
+import { UserStoreService } from './services/user-store.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent,
+    UserComponent,
     UserFormComponent,
-    UserListComponent
+    UserFormTabComponent,
+    UserFormToolbarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserStoreService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

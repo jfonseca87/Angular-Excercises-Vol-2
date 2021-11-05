@@ -16,12 +16,10 @@ export class UserStoreService {
   readonly users$ = this._users.asObservable();
 
   public get users(): User[] {
-    debugger
     return this._users.getValue();
   }
 
   public set users(val: User[]) {
-    debugger
     this._users.next(val);
   }
 
@@ -30,7 +28,6 @@ export class UserStoreService {
   }
 
   add() {
-    debugger
     const user = this.createUser();
 
     this.users = [...this.users, user];
@@ -38,7 +35,6 @@ export class UserStoreService {
   }
 
   select(selectedUser: User) {
-    debugger
     const foundUser = this.users.find(user => user.id === selectedUser.id);
 
     if(foundUser) {
@@ -50,7 +46,6 @@ export class UserStoreService {
   }
 
   remove(userToRemove: User) {
-    debugger
     const usersWithoutRemoved = this.users.filter(user => user.id !== userToRemove.id);
 
     this.users = [ ... usersWithoutRemoved];
@@ -58,13 +53,11 @@ export class UserStoreService {
   }
 
   save() {
-    debugger
     this.users = [];
     this.add();
   }
 
   private createUser() {
-    debugger
     return {
       id: new Date().valueOf().toString(),
       form: new FormGroup({
